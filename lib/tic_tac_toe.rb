@@ -44,6 +44,22 @@ class TicTacToe
     end
   end
 
+  def turn_count
+  counter = 0
+  @board.each do |i|
+    if i == "X" || i == "O"
+      counter += 1
+    end
+  end
+  counter
+end
+
+def current_player
+  turn_count % 2 == 0 ? "X" : "O"
+end
+
+
+
   def turn
     puts "Please enter 1-9:"
     input = gets.strip
