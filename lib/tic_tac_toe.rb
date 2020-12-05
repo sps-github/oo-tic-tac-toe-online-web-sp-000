@@ -57,16 +57,17 @@ class TicTacToe
 
   def won?
     board_empty = @board.none? { |i| i == "X" || i = "O"}
-    if board_empty
-      false
-    else
-      WIN_COMBINATIONS.each do |combo|
-        if @board[combo[0]] == "X" && @board[combo[1]] == "X" && @board[combo[2] == "X" || @board[combo[0]] == "O" && @board[combo[1]] == "O" && @board[combo[2]] == "O"
-          return combo
-        end
-      end
-      return false
-    end
-  end
+   if board_empty
+     false
+   else
+     WIN_COMBINATIONS.each do |combo|
+       if @board[combo[0]] == "X" && @board[combo[1]] == "X" && @board[combo[2]] == "X" || @board[combo[0]] == "O" && @board[combo[1]] == "O" && @board[combo[2]] == "O"
+         return combo
+       end
+     end
+     return false
+ end
+end
+
 
 end
