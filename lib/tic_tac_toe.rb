@@ -71,41 +71,21 @@ end
     display_board
   end
 
-  def won?
-    board_empty = @board.none? { |i| i == "X" || i = "O"}
-   if board_empty
-     false
-   else
-     WIN_COMBINATIONS.each do |combo|
-       if @board[combo[0]] == "X" && @board[combo[1]] == "X" && @board[combo[2]] == "X" || @board[combo[0]] == "O" && @board[combo[1]] == "O" && @board[combo[2]] == "O"
-         return combo
-       end
-     end
-     return false
- end
-end
-
-def full?
-    @board.all? { |i| i =="X" || i == "O"}
+  def full?
+    @board.all?{|square| square != " " }
   end
 
   def draw?
-    !won? && full? ? true : false
+    full? && !won?
   end
 
   def over?
-  won? || draw? || full? ? true : false
-end
+    won? || draw?
+  end
 
-def winner
-    WIN_COMBINATIONS.detect do |combo|
-          if @board[combo[0]] == "X" && @board[combo[1]] == "X" && @board[combo[2]] == "X"
-            return "X"
-          elsif @board[combo[0]] == "O" && @board[combo[1]] == "O" && @board[combo[2]] == "O"
-            return "O"
-          else
-            nil
-          end
+  def winner
+    if combo = won?
+      @board[combo[0]]
     end
   end
 
